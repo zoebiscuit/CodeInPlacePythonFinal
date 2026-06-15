@@ -7,12 +7,13 @@ def play_game(secret_word):
     pass
 
 def get_word():
-    index = random.randrange(3)
+    index = random.randrange(300)
 
-    all_words = LEXICON_FILE.strip()
+    all_words = open(LEXICON_FILE).read()
     return all_words[index]
     
 def main():
+    print(get_word())
     count = 0
     secret_word = get_word().lower()
     announced_word = secret_word
