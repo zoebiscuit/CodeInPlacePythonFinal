@@ -9,6 +9,10 @@ This spring I participated in Stanford's Code In Place program where I got to le
 
 This is a python terminal project where you have to guess the word, just like Wordle! This is my own version of it, so instead of 5 guesses, you have ten. And there will be words with varying lengths. 
 
+## Controls
+
+Type in a letter to see if its included in the word. You cannot type in a whole word. Guess all the letters before your attempts run out to win the game!
+
 ## Video Demo Link
 
 Watch me try it out here! https://youtu.be/kjSuHtCMgGw
