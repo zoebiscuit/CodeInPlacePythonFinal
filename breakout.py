@@ -23,6 +23,7 @@ def get_word():
 def main():
     count = 0
     secret_word = get_word().lower()
+    #print(secret_word)
     announced_word = secret_word
     play_game(secret_word)
 
@@ -53,13 +54,18 @@ def main():
                 #revealed_word = revealed_word.strip(0, position) + guess + revealed_word.slice(position, len(revealed_word))
                 #print(revealed_word)
                 new_word = [] #creating a new array!!!!!!!
-                #print(new_word)
-                for z in range(len(revealed_word)):
-                    new_word.append(revealed_word[z])  #trying to find the letter in the revealed word at a certain index and put that letter in the list
+                #(new_word)
+                for z in range(len(revealed_word)):  #trying to find the letter in the revealed word at a certain index and put that letter in the list
                     if z == position:
+                        #print(z)
+                        #print(position)
                         new_word.append(guess)
+                        #print(new_word)
+                    else:
+                        new_word.append(revealed_word[z])
 
                 revealed_word = "" #resetting string so we can rebuild what i have
+                #print(secret_word)
                 for y in range(len(secret_word)):
                     revealed_word += new_word[y]
                     #print(new_word)
