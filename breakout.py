@@ -9,11 +9,18 @@ def play_game(secret_word):
 def get_word():
     index = random.randrange(300)
 
-    all_words = open(LEXICON_FILE).read()
+    all_words = []
+    
+
+    with open(LEXICON_FILE, 'r') as file_reader:
+        for line in file_reader.readlines():
+            cleaned_line = line.strip()
+            if cleaned_line != '':
+                all_words.append(str(cleaned_line))
+
     return all_words[index]
     
 def main():
-    print(get_word())
     count = 0
     secret_word = get_word().lower()
     announced_word = secret_word
@@ -34,6 +41,7 @@ def main():
         count += 1
         x = 0
 
+        print("--------------------------------------------")
         while x<len(revealed_word):
             position = secret_word.find(guess)
             if int(position) == -1:
@@ -41,11 +49,11 @@ def main():
             else:
                 print(f"Letter number {position+1} is {guess}")
                 secret_word = secret_word.replace(guess, "-", 1) #im getting an error here
-                print(secret_word) 
+                #print(secret_word) 
                 #revealed_word = revealed_word.strip(0, position) + guess + revealed_word.slice(position, len(revealed_word))
                 #print(revealed_word)
                 new_word = ["-"] * len(revealed_word) #creating a new array!!!!!!!
-                print(new_word)
+                #print(new_word)
                 for z in range(len(revealed_word)):
                     new_word[z] = revealed_word[z] #trying to find the letter in the revealed word at a certain index and put that letter in the list
                     if z == position:
@@ -54,7 +62,7 @@ def main():
                 revealed_word = "" #resetting string so we can rebuild what i have
                 for y in range(len(secret_word)):
                     revealed_word += new_word[y]
-                    print(new_word)
+                    #print(new_word)
         
             if revealed_word == announced_word:
                 print(f"WORDLE! You got it in {INITIAL_GUESSES-count} guesses! The word was {announced_word}!")
