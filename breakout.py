@@ -52,12 +52,12 @@ def main():
                 #print(secret_word) 
                 #revealed_word = revealed_word.strip(0, position) + guess + revealed_word.slice(position, len(revealed_word))
                 #print(revealed_word)
-                new_word = ["-"] * len(revealed_word) #creating a new array!!!!!!!
+                new_word = [] #creating a new array!!!!!!!
                 #print(new_word)
                 for z in range(len(revealed_word)):
-                    new_word[z] = revealed_word[z] #trying to find the letter in the revealed word at a certain index and put that letter in the list
+                    new_word.append(revealed_word[z])  #trying to find the letter in the revealed word at a certain index and put that letter in the list
                     if z == position:
-                        new_word[z] = guess
+                        new_word.append(guess)
 
                 revealed_word = "" #resetting string so we can rebuild what i have
                 for y in range(len(secret_word)):
